@@ -1,5 +1,43 @@
-<h1>New line item</h1>
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
 
-<%= render 'form' %>
+    <div class="navbar-header">
+      <a href="/" class="navbar-brand">Counterpoint</a>
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
 
-<%= link_to 'Back', line_items_path %>
+    <div class="navbar-collapse collapse" id="navbar-main">
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to 'Edit line items', controller: 'line_items' %></li>
+        <li><a href="#" target="_blank">POS view</a></li>
+        <li><a href="#" target="_blank">Summary</a></li>
+        <li><a href="#" target="_blank">Past transactions</a></li>
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row" style="margin-top: 64px">
+    <div class="col-lg-10 col-md-10 col-sm-10">
+      <h1 style="margin-bottom: 24px">New Line Item</h1>
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-2">
+      <%= link_to "Cancel", line_items_path, class: "btn btn-default", style: "margin: 24px 0;" %><!-- this probably should be right-aligned -->
+    </div>
+  </div>
+  <div class="row" style="margin-top: 0px">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class="bs-component">
+        <%= render 'form' %>
+        <%= link_to 'Back', line_items_path %>
+      </div>
+    </div>
+  </div>
+</div>
