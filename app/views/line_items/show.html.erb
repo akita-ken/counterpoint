@@ -25,14 +25,13 @@
 
 <div class="container">
   <div class="row" style="margin-top: 64px">
-    <div class="col-lg-8 col-md-8 col-sm-8">
+    <div class="col-lg-7 col-md-7 col-sm-7">
       <h1 style="margin-bottom: 24px">Line Item #<%= @line_item.id %></h1>
     </div>
-    <div class="col-lg-2 col-md-2 col-sm-2">
-      <%= link_to "Edit Item", edit_line_item_path(@line_item), class: "btn btn-primary", style: "margin: 24px 0;" %><!-- this probably should be right-aligned -->
-    </div>
-    <div class="col-lg-2 col-md-2 col-sm-2">
-      <%= link_to "Delete", line_item_path(@line_item), method: :delete, class: "btn btn-danger", style: "margin: 24px 0;", data: {confirm: 'Are you sure?' } %><!-- this probably should be right-aligned -->
+    <div class="col-lg-5 col-md-5 col-sm-5">
+    <%= link_to "Back to List", line_items_path, class: "btn btn-default", style: "margin: 24px 0;" %>
+      <%= link_to "Edit Item", edit_line_item_path(@line_item), class: "btn btn-primary", style: "margin: 24px 0;" %>
+      <%= link_to "Delete", line_item_path(@line_item), method: :delete, class: "btn btn-danger", style: "margin: 24px 0;", data: {confirm: 'Are you sure?' } %>
     </div>
   </div>
   <div class="row" style="margin-top: 0px">
