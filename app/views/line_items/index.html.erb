@@ -44,7 +44,7 @@
 
           <% @line_items.each do |line_item| %>
             <tr>
-              <td><%= line_item.item_name %></td>
+              <td><%= link_to line_item.item_name, line_item_path(line_item) %></td>
               <td><%= line_item.item_price %></td>
               <td class="text-center"><%= link_to 'Edit', edit_line_item_path(line_item), class: "btn btn-primary btn-sm" %></td>
               <td class="text-center"><%= link_to 'Delete', line_item_path(line_item), method: :delete, class: "btn btn-primary btn-sm", data: {confirm: 'Are you sure?' } %></td>
