@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'auth/index'
   
-  resources :line_items
+  resources :logs
   root 'auth#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
