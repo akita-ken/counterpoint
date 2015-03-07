@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row" style="margin-top: 64px">
+    <div class="col-lg-9 col-md-9 col-sm-9">
+      <h1 style="margin-bottom: 24px">Listing Log Entries</h1>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-3">
+      <%= link_to "Add Log Entry", new_log_path, class: "btn btn-primary", style: "margin: 24px 0;" %><!-- this probably should be right-aligned -->
+    </div>
+  </div>
+  <div class="row" style="margin-top: 0px">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class="bs-component">
+        <table class="table table-bordered table-striped">
+          <tr>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Duration</th>
+            <th></th>
+          </tr>
+
+          <% @logs.each do |log| %>
+            <tr>
+              <td><%= log.date %></td>
+              <td><%= link_to log.description, log_path(log) %></td>
+              <td><%= log.duration %></td>
+              <td class="text-center"><%= link_to 'Edit', edit_log_path(log), class: "btn btn-primary btn-sm" %>
+              <%= link_to 'Delete', log_path(log), method: :delete, class: "btn btn-primary btn-sm", data: {confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row" style="margin-top: 64px">
+    <div class="col-lg-10 col-md-10 col-sm-10">
+      <h1 style="margin-bottom: 24px">New Log Entry</h1>
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-2">
+      <%= link_to "Cancel", logs_path, class: "btn btn-default", style: "margin: 24px 0;" %><!-- this probably should be right-aligned -->
+    </div>
+  </div>
+  <div class="row" style="margin-top: 0px">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class="bs-component">
+        <%= render 'form' %>
+      </div>
+    </div>
+  </div>
+</div>

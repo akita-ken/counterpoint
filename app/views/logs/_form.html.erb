@@ -1,0 +1,35 @@
+<%= form_for @log do |f| %>
+	<% if @log.errors.any? %>
+    <div id="error">
+      <h2>
+        <%= pluralize(@log.errors.count, "error") %> prohibited this log entry from being saved:
+      </h2>
+
+      <ul>
+        <% @log.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+
+    <p>
+      <%= f.label :date %><br>
+      <%= f.text_field :date %>
+    </p>
+
+    <p>
+      <%= f.label :description %><br>
+      <%= f.text_field :description %>
+    </p>
+
+    <p>
+      <%= f.label :duration %><br>
+      <%= f.text_field :duration %>
+    </p>
+
+    <p>
+      <%= f.submit %>
+    </p>
+
+<% end %>
