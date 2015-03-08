@@ -2,7 +2,10 @@ Rails.application.routes.draw do
   root 'auth#index'
   # get 'auth/index'
 
-  get 'logs/summary'
+  # these need to come before the resources entry
+  # otherwise it will look for log with id=summary
+  get 'logs/summary(/:period(/:date))', to: 'logs#summary'
+
   resources :logs
 
   # The priority is based upon order of creation: first created -> highest priority.
