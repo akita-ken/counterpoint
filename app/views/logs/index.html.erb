@@ -7,20 +7,33 @@
       <%= link_to "Add Log Entry", new_log_path, class: "btn btn-primary", style: "margin: 24px 0;" %><!-- this probably should be right-aligned -->
     </div>
   </div>
+
+  <%
+    log_hash = Hash.new
+    @logs.each do |log|
+      if(log_hash[log.date.to_date] != nil)
+        log_array = log_hash[log.date.to_date]
+        log_array << log
+      else
+        log_hash[log.date.to_date] = [log]
+      end
+    end
+  %>
+
   <div class="row" style="margin-top: 0px">
     <div class="col-lg-12 col-md-12 col-sm-12">
       <div class="bs-component">
+        <% log_hash.each_pair do |date,log_object| %>
         <table class="table table-bordered table-striped">
+          
+          <h3><%= date %></h3>
           <tr>
-            <th>Date</th>
             <th>Description</th>
             <th>Duration</th>
             <th></th>
           </tr>
-
-          <% @logs.each do |log| %>
+          <% log_object.each do |log| %>
             <tr>
-              <td><%= log.date %></td>
               <td><%= link_to log.description, log_path(log) %></td>
               <td><%= log.duration %></td>
               <td class="text-center"><%= link_to 'Edit', edit_log_path(log), class: "btn btn-primary btn-sm" %>
@@ -28,6 +41,7 @@
             </tr>
           <% end %>
         </table>
+        <% end %>
       </div>
     </div>
   </div>
