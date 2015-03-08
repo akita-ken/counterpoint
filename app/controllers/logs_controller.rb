@@ -21,6 +21,7 @@ class LogsController < ApplicationController
     end
 
     # assign instance variables for view
+    @date = params[:date]
     @start_date = start_time.to_date
     @end_date = end_time.to_date
     @logs = Log.where(date: start_time..end_time).
