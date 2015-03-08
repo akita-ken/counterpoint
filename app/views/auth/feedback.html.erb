@@ -1,0 +1,68 @@
+<head>
+<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/0.8.0/angularfire.min.js"></script>
+</head>
+
+<div class="container">
+	<div class="row" style="margin-top:64px">
+		<h3>Leave Feedback:</h3>
+	</div>
+
+	<div class="row" style="margin-top: 12px">
+		<div class="col-lg-9 col-md-9 col-sm-9">
+			<form class="form-horizontal">
+			  <div class="form-group">
+			    <label class="col-sm-2 control-label">Name:</label>
+			    <div class="col-sm-10">
+			    <input type="text" ng-model="feedback.name" placeholder="First Name">
+			    </div>
+			  </div> 
+			  <div class="form-group">
+			    <label class="col-sm-2 control-label">Email:</label>
+			    <div class="col-sm-10">
+			    <input type="text" ng-model="feedback.email" placeholder="Email">
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label class="col-sm-2 control-label">Start doing:</label>
+			    <div class="col-sm-10">
+			    <textarea class="form-control" ng-model="feedback.start" rows="3"></textarea>
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label class="col-sm-2 control-label">Stop doing:</label>
+			    <div class="col-sm-10">
+			    <textarea class="form-control" ng-model="feedback.stop" rows="3"></textarea>
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label class="col-sm-2 control-label">Continue doing:</label>
+			    <div class="col-sm-10">
+			    <textarea class="form-control" ng-model="feedback.continue" rows="3"></textarea>
+			    </div>
+			  </div>
+			</form>
+
+			<hr>
+			<button class="btn btn-success" ng-click="save()">
+			<span class="glyphicon glyphicon-save"></span>  Submit feedback
+			</button>
+			<hr>
+			Please take a look at  
+			<button class="btn btn-info" ng-click="" style="margin: 0px 10px">
+			<span class="glyphicon glyphicon-save"></span>team X's app
+			</button> and 
+			<button class="btn btn-info" ng-click="" style="margin: 0px 10px">
+			<span class="glyphicon glyphicon-save"></span>team Y's app
+			</button>
+			.
+		</div>
+		<div class="col-lg-3 col-md-3 col-sm-3">
+		</div>
+	</div>
+	<div class="row" class="margin-top: 32px">
+		<br/><br/>
+	</div>
+
+</div>
