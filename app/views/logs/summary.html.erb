@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row" style="margin-top: 64px">
     <div class="col-lg-9 col-md-9 col-sm-9">
-      <h1 style="margin-bottom: 24px">Summary of Log Entries</h1>
+      <h1 style="margin-bottom: 24px">Summary for <%= @start_date %> to <%= @end_date %></h1>
     </div>
     <div class="col-lg-3 col-md-3 col-sm-3">
 
@@ -20,7 +20,7 @@
 
           <% @logs.each do |log| %>
             <tr>
-              <td><%= log.date %></td>
+              <td><%= log.date.to_date %></td>
               <td><%= link_to log.description, log_path(log) %></td>
               <td><%= log.duration %></td>
               <td class="text-center"><%= link_to 'Edit', edit_log_path(log), class: "btn btn-primary btn-sm" %>

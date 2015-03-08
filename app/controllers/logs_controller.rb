@@ -1,6 +1,30 @@
 class LogsController < ApplicationController
   def summary
-    @logs = Log.all
+    # assign default parameters
+    params[:date] ||= Date.today
+    params[:period] ||= 'day'
+
+    # convert from string to Date if necessary
+    # no harm if it's already a Date
+    params[:date] = params[:date].to_date
+
+    # calculate the start/end Times for period
+    if params[:period] == 'day'
+      start_time = params[:date].beginning_of_day
+      end_time = params[:date].end_of_day
+    elsif params[:period] == 'week'
+      start_time = params[:date].beginning_of_week
+      end_time = params[:date].end_of_week
+    elsif params[:period] == 'month'
+      start_time = params[:date].beginning_of_month
+      end_time = params[:date].end_of_month
+    end
+
+    # assign instance variables for view
+    @start_date = start_time.to_date
+    @end_date = end_time.to_date
+    @logs = Log.where(date: start_time..end_time).
+      order(date: :desc, duration: :desc, description: :asc)
   end
 
   def index
