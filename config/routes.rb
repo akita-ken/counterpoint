@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   # these need to come before the resources entry
   # otherwise it will look for log with id=summary
-  get 'logs/summary(/:period(/:date))', to: 'logs#summary'
+  get 'logs/summary(/:period(/:date))', to: 'logs#summary', as: :summary
 
   resources :logs
 
