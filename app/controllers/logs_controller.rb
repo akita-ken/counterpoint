@@ -1,4 +1,8 @@
 class LogsController < ApplicationController
+  def summary
+    @logs = Log.all
+  end
+
   def index
     @logs = Log.all
   end

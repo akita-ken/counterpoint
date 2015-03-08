@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'auth/index'
   
+  get 'logs/summary'
   resources :logs
   root 'auth#index'
 
