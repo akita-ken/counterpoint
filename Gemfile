@@ -30,6 +30,7 @@ gem 'chartkick'
 gem 'bootstrap-datepicker-rails'
 
 gem 'mandrill-api', '~> 1.0'
+gem 'mandrill-rails'
 gem 'omniauth-google-oauth2'
 gem 'devise'
 gem 'paypal-sdk-rest'
