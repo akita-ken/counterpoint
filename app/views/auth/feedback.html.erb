@@ -19,6 +19,13 @@
 
         $scope.showForm = true;
 
+        $scope.feedback = {};
+        $scope.feedback.name = '';
+        $scope.feedback.email = '';
+        $scope.feedback.start = '';
+        $scope.feedback.stop = '';
+        $scope.feedback.continueText = '';
+
         $scope.addFeedback = function(){
           $scope.feedbackArray.$add({
             name: $scope.feedback.name,
