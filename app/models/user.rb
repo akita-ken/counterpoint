@@ -8,14 +8,16 @@ class User < ActiveRecord::Base
 
   has_many :logs, dependent: :destroy
 
-  def send_daily_emails
+  def self.send_daily_emails
     m = Mandrill::API.new
+    ac = ActionController::Base.new()
+
     message = {
       :from_name => "Counterpoint",
       :from_email => "reply@counterpoint.cflee.net",
-      :to => User.all.map { |u| {:email => u.email, :name => u.email, :type => 'to'} }
+      :to => User.all.map { |u| {:email => u.email, :name => u.email, :type => 'to'} },
       :subject => "What did you do today? - #{Date.current.to_formatted_s(:rfc822)}",
-      :html => render_to_string('mailer/daily_prompt', :layout => false),
+      :html => ac.render_to_string('mailer/daily_prompt', :layout => false),
       :merge_vars => [],
       :preserve_recipients => false
     }
