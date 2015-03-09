@@ -10,9 +10,9 @@ class ReplyInboxController < ApplicationController
 
     user = User.find_by_email(from_email)
     unless user.nil?
-      parsed_body.each do |line|
+      parsed_body.lines.each do |line|
         log = user.logs.new
-        log.description = line
+        log.description = line.chomp
         log.date = Date.current
         log.duration = 0.0
         log.save
