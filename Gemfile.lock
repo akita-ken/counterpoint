@@ -208,6 +208,7 @@ DEPENDENCIES
   figaro
   jbuilder (~> 2.0)
   jquery-rails
+  mail
   mandrill-api (~> 1.0)
   mandrill-rails
   omniauth-google-oauth2
