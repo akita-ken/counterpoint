@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="counterpointApp">
 <head>
   <meta charset="utf-8">
   <title>Counterpoint</title>
@@ -8,11 +8,11 @@
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
+  <%= yield :head %>
   <%= render 'analytics' %>
 
 </head>
-<body>
+<body ng-controller="counterpointController">
 <div class="navbar navbar-default navbar-fixed-top">
   <div class="container">
 
