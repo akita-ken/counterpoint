@@ -33,7 +33,7 @@ gem 'bootstrap-datepicker-rails'
 # email
 gem 'mandrill-api', '~> 1.0'
 gem 'mandrill-rails'
-gem 'mail'
+gem 'email_reply_parser'
 
 # auth
 gem 'omniauth-google-oauth2'
