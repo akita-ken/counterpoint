@@ -1,4 +1,6 @@
 class LogsController < ApplicationController
+  before_action :authenticate_user!
+
   def summary
     # assign default parameters
     params[:date] ||= Date.today
