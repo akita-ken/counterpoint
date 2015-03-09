@@ -9,8 +9,9 @@
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
   <%= yield :head %>
-  <%= render 'analytics' %>
+  <%= render 'layouts/analytics' %>
 
 </head>
 <body>
@@ -34,6 +35,15 @@
         <li><%= link_to 'Summary view', summary_path %></a></li>
       </ul>
 
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row" style="margin-top: 64px">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <% if flash[:notice] %><div class="alert alert-info"><%= notice %></div><% end %>
+      <% if flash[:alert] %><div class="alert alert-warning"><%= alert %></div><% end %>
     </div>
   </div>
 </div>
