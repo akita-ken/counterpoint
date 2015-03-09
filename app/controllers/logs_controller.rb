@@ -32,7 +32,8 @@ class LogsController < ApplicationController
   end
 
   def index
-    @logs = current_user.logs.all
+    @logs = current_user.logs.all.
+      order(date: :desc, duration: :desc, description: :asc)
   end
 
   def new
