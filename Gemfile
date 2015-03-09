@@ -30,12 +30,18 @@ gem 'chartkick'
 #datepicker library
 gem 'bootstrap-datepicker-rails'
 
+# email
 gem 'mandrill-api', '~> 1.0'
 gem 'mandrill-rails'
+
+# auth
 gem 'omniauth-google-oauth2'
 gem 'devise'
+
+# payments
 gem 'paypal-sdk-rest'
 
+# env variable config
 gem 'figaro'
 
 
