@@ -1,21 +1,52 @@
-<head>
-<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
-    <script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
-    <script src="https://cdn.firebase.com/libs/angularfire/0.8.0/angularfire.min.js"></script>
-</head>
+<% content_for :head do %>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.2.2/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js"></script>
 
-<div class="container">
+	<script>
+	   var counterpointApp = angular.module("counterpointApp", ["firebase"]);
+	    counterpointApp.controller('counterpointController', function($scope, $firebaseArray) {
+		    
+		    //We can replace this with a Firebase url later on. 
+		    var ref = new Firebase("https://is429-kennylim.firebaseio.com/feedback");
+		    //$scope.users = $firebase(ref.child("feedback")).$asArray(); 
+		    $scope.feedbackArray = $firebaseArray(ref);
+
+		    $scope.showForm = true;
+
+		    $scope.addFeedback = function(){
+		      $scope.feedbackArray.$add({
+		      	name: $scope.feedback.name,
+		      	email: $scope.feedback.email,
+		      	start: $scope.feedback.start,
+		      	stop: $scope.feedback.stop,
+		      	continueText: $scope.feedback.continueText,
+		      });
+		      $scope.showForm = false;
+		    };
+	    });
+
+	</script>
+<% end %>
+
+<div class="container" ng-hide="showForm">
+	<div class="row" style="margin-top: 96px">
+		<h3>Thank you for your feedback.</h3>
+	</div>
+</div>
+
+<div class="container" ng-show="showForm">
 	<div class="row" style="margin-top:64px">
 		<h3>Leave Feedback:</h3>
 	</div>
 
 	<div class="row" style="margin-top: 12px">
 		<div class="col-lg-9 col-md-9 col-sm-9">
-			<form class="form-horizontal">
+			<form class="form-horizontal" ng-submit="addFeedback()">
 			  <div class="form-group">
 			    <label class="col-sm-2 control-label">Name:</label>
 			    <div class="col-sm-10">
-			    <input type="text" ng-model="feedback.name" placeholder="First Name">
+			    <input type="text" ng-model="feedback.name" placeholder="Name">
 			    </div>
 			  </div> 
 			  <div class="form-group">
@@ -39,24 +70,14 @@
 			  <div class="form-group">
 			    <label class="col-sm-2 control-label">Continue doing:</label>
 			    <div class="col-sm-10">
-			    <textarea class="form-control" ng-model="feedback.continue" rows="3"></textarea>
+			    <textarea class="form-control" ng-model="feedback.continueText" rows="3"></textarea>
 			    </div>
 			  </div>
+				<hr>
+				<button class="btn btn-success" type="submit">
+					<span class="glyphicon glyphicon-save"></span>  Submit feedback
+				</button>
 			</form>
-
-			<hr>
-			<button class="btn btn-success" ng-click="save()">
-			<span class="glyphicon glyphicon-save"></span>  Submit feedback
-			</button>
-			<hr>
-			Please take a look at  
-			<button class="btn btn-info" ng-click="" style="margin: 0px 10px">
-			<span class="glyphicon glyphicon-save"></span>team X's app
-			</button> and 
-			<button class="btn btn-info" ng-click="" style="margin: 0px 10px">
-			<span class="glyphicon glyphicon-save"></span>team Y's app
-			</button>
-			.
 		</div>
 		<div class="col-lg-3 col-md-3 col-sm-3">
 		</div>
@@ -64,5 +85,18 @@
 	<div class="row" class="margin-top: 32px">
 		<br/><br/>
 	</div>
+</div>
 
+<div class="container">
+	<hr>
+	Please take a look at  
+	<button class="btn btn-info" style="margin: 0px 10px">
+	<a href="http://www.alphis.me/cognitio/feedback.html" style="color: #fff"><span class="glyphicon glyphicon-save"></span>team 13's feedback page
+	</button></a> and 
+	<a href="#"><button class="btn btn-info" style="margin: 0px 10px; color: #fff">
+	<span class="glyphicon glyphicon-save"></span>team 15's feedback page
+	</button></a>
+	.
+	<br /><br />
+	<br /><br />
 </div>
