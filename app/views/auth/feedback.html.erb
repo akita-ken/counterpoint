@@ -3,8 +3,13 @@
     <script src="https://cdn.firebase.com/js/client/2.2.2/firebase.js"></script>
     <script src="https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js"></script>
 
-	<script>
-	   var counterpointApp = angular.module("counterpointApp", ["firebase"]);
+	<script data-no-turbolink>
+	  var counterpointApp = angular.module("counterpointApp", ["firebase"]);
+
+			$(document).on('ready page:load', function() {
+			  angular.bootstrap(document, ['counterpointApp']);
+			});
+
 	    counterpointApp.controller('counterpointController', function($scope, $firebaseArray) {
 		    
 		    //We can replace this with a Firebase url later on. 
