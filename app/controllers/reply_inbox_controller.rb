@@ -14,7 +14,7 @@ class ReplyInboxController < ApplicationController
         log = user.logs.new
         log.description = line.chomp
         log.date = Date.current
-        log.duration = 0.0
+        log.duration = line.split.first.to_f
         log.save
       end
     end
