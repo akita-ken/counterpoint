@@ -1,107 +1,114 @@
 <% content_for :head do %>
-	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
     <script src="https://cdn.firebase.com/js/client/2.2.2/firebase.js"></script>
     <script src="https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js"></script>
 
-	<script data-no-turbolink>
-	  var counterpointApp = angular.module("counterpointApp", ["firebase"]);
+  <script data-no-turbolink>
+    var counterpointApp = angular.module("counterpointApp", ["firebase"]);
 
-			$(document).on('ready page:load', function() {
-			  angular.bootstrap(document, ['counterpointApp']);
-			});
+      $(document).on('ready page:load', function() {
+        angular.bootstrap(document, ['counterpointApp']);
+      });
 
-	    counterpointApp.controller('counterpointController', function($scope, $firebaseArray) {
-		    
-		    //We can replace this with a Firebase url later on. 
-		    var ref = new Firebase("https://is429-kennylim.firebaseio.com/feedback");
-		    //$scope.users = $firebase(ref.child("feedback")).$asArray(); 
-		    $scope.feedbackArray = $firebaseArray(ref);
+      counterpointApp.controller('counterpointController', function($scope, $firebaseArray) {
 
-		    $scope.showForm = true;
+        //We can replace this with a Firebase url later on.
+        var ref = new Firebase("https://is429-kennylim.firebaseio.com/feedback");
+        //$scope.users = $firebase(ref.child("feedback")).$asArray();
+        $scope.feedbackArray = $firebaseArray(ref);
 
-		    $scope.addFeedback = function(){
-		      $scope.feedbackArray.$add({
-		      	name: $scope.feedback.name,
-		      	email: $scope.feedback.email,
-		      	start: $scope.feedback.start,
-		      	stop: $scope.feedback.stop,
-		      	continueText: $scope.feedback.continueText,
-		      });
-		      $scope.showForm = false;
-		    };
-	    });
+        $scope.showForm = true;
 
-	</script>
+        $scope.addFeedback = function(){
+          $scope.feedbackArray.$add({
+            name: $scope.feedback.name,
+            email: $scope.feedback.email,
+            start: $scope.feedback.start,
+            stop: $scope.feedback.stop,
+            continueText: $scope.feedback.continueText,
+          });
+          $scope.showForm = false;
+        };
+      });
+
+  </script>
 <% end %>
 
+<div class="container">
+  <div class="row" style="margin-top: 96px">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <p><b>Scenario:</b> The Singapore Government has launched a scheme where they will pay university students and recent graduates to work for local SaaS companies for up to 1 year. In addition to this government-funded subsidy, we are authorized to pay you an incentive bonus plan based on your ability to facilitate the growth of our SaaS business. Our company’s bonus plan will pay you the full amount of all recurring revenue that you personally help to facilitate. We will continue to award you all recurring revenue for 1 year after you leave the company. Please watch our short onboarding video to get an understanding of our service. After that, we would appreciate your feedback on what we could do to increase the possibility of you joining our company to help facilitate our growth.</p>
+      <p><a href="/" target="_blank">Click here</a> to visit our main page</p>
+      <p>Click here to watch our 60-sec overview video</p>
+    </div>
+  </div>
+</div>
+
 <div class="container" ng-hide="showForm">
-	<div class="row" style="margin-top: 96px">
-		<h3>Thank you for your feedback.</h3>
-	</div>
+  <div class="row">
+    <h3>Thank you for your feedback.</h3>
+  </div>
 </div>
 
 <div class="container" ng-show="showForm">
-	<div class="row" style="margin-top:64px">
-		<h3>Leave Feedback:</h3>
-	</div>
+  <div class="row">
+    <h3>Leave Feedback:</h3>
+  </div>
 
-	<div class="row" style="margin-top: 12px">
-		<div class="col-lg-9 col-md-9 col-sm-9">
-			<form class="form-horizontal" ng-submit="addFeedback()">
-			  <div class="form-group">
-			    <label class="col-sm-2 control-label">Name:</label>
-			    <div class="col-sm-10">
-			    <input type="text" ng-model="feedback.name" placeholder="Name">
-			    </div>
-			  </div> 
-			  <div class="form-group">
-			    <label class="col-sm-2 control-label">Email:</label>
-			    <div class="col-sm-10">
-			    <input type="text" ng-model="feedback.email" placeholder="Email">
-			    </div>
-			  </div>
-			  <div class="form-group">
-			    <label class="col-sm-2 control-label">Start doing:</label>
-			    <div class="col-sm-10">
-			    <textarea class="form-control" ng-model="feedback.start" rows="3"></textarea>
-			    </div>
-			  </div>
-			  <div class="form-group">
-			    <label class="col-sm-2 control-label">Stop doing:</label>
-			    <div class="col-sm-10">
-			    <textarea class="form-control" ng-model="feedback.stop" rows="3"></textarea>
-			    </div>
-			  </div>
-			  <div class="form-group">
-			    <label class="col-sm-2 control-label">Continue doing:</label>
-			    <div class="col-sm-10">
-			    <textarea class="form-control" ng-model="feedback.continueText" rows="3"></textarea>
-			    </div>
-			  </div>
-				<hr>
-				<button class="btn btn-success" type="submit">
-					<span class="glyphicon glyphicon-save"></span>  Submit feedback
-				</button>
-			</form>
-		</div>
-		<div class="col-lg-3 col-md-3 col-sm-3">
-		</div>
-	</div>
-	<div class="row" class="margin-top: 32px">
-		<br/><br/>
-	</div>
+  <div class="row" style="margin-top: 12px">
+    <div class="col-lg-12  col-md-12 col-sm-12">
+      <form class="form-horizontal" ng-submit="addFeedback()">
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Name:</label>
+          <div class="col-sm-10">
+          <input type="text" ng-model="feedback.name" placeholder="Name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Email:</label>
+          <div class="col-sm-10">
+          <input type="text" ng-model="feedback.email" placeholder="Email">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Start doing:</label>
+          <div class="col-sm-10">
+          <textarea class="form-control" ng-model="feedback.start" rows="3"></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Stop doing:</label>
+          <div class="col-sm-10">
+          <textarea class="form-control" ng-model="feedback.stop" rows="3"></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Continue doing:</label>
+          <div class="col-sm-10">
+          <textarea class="form-control" ng-model="feedback.continueText" rows="3"></textarea>
+          </div>
+        </div>
+        <button class="btn btn-success" type="submit">
+          <span class="glyphicon glyphicon-save"></span>  Submit feedback
+        </button>
+      </form>
+    </div>
+  </div>
 </div>
 
 <div class="container">
-	<hr>
-	Please take a look at  
-	<button class="btn btn-info" style="margin: 0px 10px">
-	<a href="http://www.alphis.me/cognitio/feedback.html" style="color: #fff"><span class="glyphicon glyphicon-save"></span>team 13's feedback page
-	</button></a> and 
-	<a href="https://dinein.herokuapp.com/feedback.html"><button class="btn btn-info" style="margin: 0px 10px; color: #fff">
-	<span class="glyphicon glyphicon-save"></span>team 15's feedback page
-	</button></a>
-	.
-	<br /><br />
-	<br /><br />
+  <div class="row" style="margin-top: 12px">
+    <div class="col-lg-12  col-md-12 col-sm-12">
+      <p>
+        <hr>
+        Please take a look at
+        <button class="btn btn-info" style="margin: 0px 10px">
+        <a href="http://www.alphis.me/cognitio/feedback.html" style="color: #fff"><span class="glyphicon glyphicon-save"></span>team 13's feedback page
+        </a></button> and
+        <a href="https://dinein.herokuapp.com/feedback.html"><button class="btn btn-info" style="margin: 0px 10px; color: #fff">
+        <span class="glyphicon glyphicon-save"></span>team 15's feedback page
+        </button></a> too!
+      </p>
+    </div>
+  </div>
 </div>
