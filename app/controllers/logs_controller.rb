@@ -67,7 +67,7 @@ class LogsController < ApplicationController
     @log = current_user.logs.find(params[:id])
     @log.destroy
 
-    redirect_to log_path
+    redirect_to :controller => 'logs', :action => 'index'
   end
 
   def create
