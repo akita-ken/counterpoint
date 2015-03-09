@@ -8,6 +8,9 @@ Rails.application.routes.draw do
 
   get 'feedback', to: 'auth#feedback', as: :feedback
 
+  # mandrill webhook
+  resource :reply_inbox, :controller => 'reply_inbox', :only => [:show, :create]
+
   resources :logs
 
   # The priority is based upon order of creation: first created -> highest priority.
