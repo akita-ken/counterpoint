@@ -29,6 +29,8 @@ gem 'chartkick'
 #datepicker library
 gem 'bootstrap-datepicker-rails'
 
+gem 'mandrill-api', '~> 1.0'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
