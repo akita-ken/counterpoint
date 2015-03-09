@@ -4,7 +4,7 @@ class LogsController < ApplicationController
 
   def summary
     # assign default parameters
-    params[:date] ||= Date.today
+    params[:date] ||= Date.current
     params[:period] ||= 'day'
 
     # convert from string to Date if necessary
