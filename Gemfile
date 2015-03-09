@@ -32,6 +32,7 @@ gem 'bootstrap-datepicker-rails'
 gem 'mandrill-api', '~> 1.0'
 gem 'omniauth-google-oauth2'
 gem 'devise'
+gem 'paypal-sdk-rest'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
