@@ -33,6 +33,7 @@ gem 'mandrill-api', '~> 1.0'
 gem 'omniauth-google-oauth2'
 gem 'devise'
 gem 'paypal-sdk-rest'
+gem 'figaro'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
