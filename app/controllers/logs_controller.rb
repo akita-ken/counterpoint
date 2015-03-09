@@ -26,31 +26,31 @@ class LogsController < ApplicationController
     @date = params[:date]
     @start_date = start_time.to_date
     @end_date = end_time.to_date
-    @logs = Log.where(date: start_time..end_time).
+    @logs = current_user.logs.where(date: start_time..end_time).
       order(date: :desc, duration: :desc, description: :asc)
   end
 
   def index
-    @logs = Log.all
+    @logs = current_user.logs.all
   end
 
   def new
-    @log = Log.new
+    @log = current_user.logs.new
   end
 
   def edit
-    @log = Log.find(params[:id])
+    @log = current_user.logs.find(params[:id])
   end
 
   def destroy
-    @log = Log.find(params[:id])
+    @log = current_user.logs.find(params[:id])
     @log.destroy
 
     redirect_to log_path
   end
 
   def create
-    @log = Log.new(log_params)
+    @log = current_user.logs.new(log_params)
 
     if @log.save
       redirect_to @log
@@ -60,7 +60,7 @@ class LogsController < ApplicationController
   end
 
   def update
-    @log = Log.find(params[:id])
+    @log = current_user.logs.find(params[:id])
 
     if @log.update(log_params)
       redirect_to @log
@@ -70,7 +70,7 @@ class LogsController < ApplicationController
   end
 
   def show
-    @log = Log.find(params[:id])
+    @log = current_user.logs.find(params[:id])
   end
 
   private
