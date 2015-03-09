@@ -1,3 +1,5 @@
+require 'mandrill' # mandrill-api gem
+
 class LogsController < ApplicationController
   before_action :authenticate_user!
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
@@ -29,6 +31,23 @@ class LogsController < ApplicationController
     @end_date = end_time.to_date
     @logs = current_user.logs.where(date: start_time..end_time).
       order(date: :desc, duration: :desc, description: :asc)
+  end
+
+  def send_email
+    m = Mandrill::API.new
+
+    message = {
+      :from_name => "Counterpoint",
+      :from_email => "reply@counterpoint.cflee.net",
+      :to => [{:email => current_user.email, :name => current_user.email, :type => 'to'}],
+      :subject => "What did you do today? - #{Date.current.to_formatted_s(:rfc822)}",
+      :html => render_to_string('mailer/daily_prompt', :layout => false),
+      :merge_vars => [],
+      :preserve_recipients => false
+    }
+    sending = m.messages.send message
+
+    redirect_to :controller => 'logs', :action => 'index'
   end
 
   def index

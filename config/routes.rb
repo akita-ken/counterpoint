@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # these need to come before the resources entry
   # otherwise it will look for log with id=summary
   get 'logs/summary(/:period(/:date))', to: 'logs#summary', as: :summary
-
+  get 'logs/send_email', to: 'logs#send_email', as: :logs_send_email
   get 'feedback', to: 'auth#feedback', as: :feedback
 
   # mandrill webhook
