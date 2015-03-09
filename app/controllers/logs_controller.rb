@@ -1,5 +1,6 @@
 class LogsController < ApplicationController
   before_action :authenticate_user!
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   def summary
     # assign default parameters
@@ -76,5 +77,10 @@ class LogsController < ApplicationController
   private
     def log_params
       params.require(:log).permit(:date, :description, :duration)
+    end
+
+    def record_not_found
+      flash[:alert] = 'Unable to find record'
+      redirect_to :controller => 'logs', :action => 'index'
     end
 end
