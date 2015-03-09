@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 
   has_many :logs, dependent: :destroy
 
+  # send prompt emails to all users
   def self.send_daily_emails
     m = Mandrill::API.new
     ac = ActionController::Base.new()
