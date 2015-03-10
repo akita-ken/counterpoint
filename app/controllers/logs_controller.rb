@@ -11,7 +11,8 @@ class LogsController < ApplicationController
 
     # convert from string to Date if necessary
     # no harm if it's already a Date
-    params[:date] = params[:date].to_date
+    # to_time parses it as a localtime string
+    params[:date] = params[:date].to_time.in_time_zone
 
     # calculate the start/end Times for period
     if params[:period] == 'day'
@@ -26,7 +27,7 @@ class LogsController < ApplicationController
     end
 
     # assign instance variables for view
-    @date = params[:date]
+    @date = params[:date].to_date
     @start_date = start_time.to_date
     @end_date = end_time.to_date
     @logs = current_user.logs.where(date: start_time..end_time).
@@ -61,6 +62,7 @@ class LogsController < ApplicationController
 
   def edit
     @log = current_user.logs.find(params[:id])
+    @log.date = @log.date.in_time_zone.to_date
   end
 
   def destroy
