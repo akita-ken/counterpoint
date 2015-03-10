@@ -74,7 +74,7 @@ class LogsController < ApplicationController
     @log = current_user.logs.new(log_params)
 
     if @log.save
-      redirect_to @log
+      redirect_to :controller => 'logs', :action => 'index'
     else
       render 'new'
     end
@@ -84,7 +84,7 @@ class LogsController < ApplicationController
     @log = current_user.logs.find(params[:id])
 
     if @log.update(log_params)
-      redirect_to @log
+      redirect_to :controller => 'logs', :action => 'index'
     else
       render 'edit'
     end
